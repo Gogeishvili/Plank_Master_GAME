@@ -24,6 +24,8 @@ public class Character : MonoBehaviour
         _thisAgent.Move(forward * Time.deltaTime * speed);
     }
 
+    
+
     private void OnTriggerEnter(Collider other) {
         Debug.Log(other.gameObject.name);
         other.gameObject.SetActive(false);
