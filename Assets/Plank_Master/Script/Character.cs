@@ -5,11 +5,12 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] float _maxSpeed = 1;
+    [SerializeField] protected float _maxSpeed = 1;
+    [SerializeField] protected bool _isPlayer = false;
     [SerializeField] Animator _thisAnimator = null;
     [SerializeField] List<GameObject> _myPlanks = new List<GameObject>();
     [SerializeField] GameObject _plankPrototypePref;
-    NavMeshAgent _thisAgent = null;
+    protected NavMeshAgent _thisAgent = null;
     Transform _planksParent = null;
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
@@ -26,18 +27,33 @@ public class Character : MonoBehaviour
 
     public virtual void Move(Vector2 direction)
     {
-        float speed = _maxSpeed * direction.magnitude;
-        //_thisAnimator.SetFloat("speed", direction.magnitude);
-        Vector3 forward = new Vector3(direction.x, 0, direction.y);
 
-        if (forward.sqrMagnitude > 0)
-            transform.forward = forward;
+        float speed = _maxSpeed * direction.magnitude;
+        _thisAnimator.SetFloat("speed", direction.magnitude);
 
         if (_thisAgent.enabled)
         {
+            Vector3 forward = new Vector3(direction.x, 0, direction.y);
+
+            if (forward.sqrMagnitude > 0)
+                transform.forward = forward;
+
             _thisAgent.Move(forward * Time.deltaTime * speed);
+
         }
     }
+     public virtual void Move(Vector3 direction)
+    {
+
+        float speed = _maxSpeed * direction.magnitude;
+        _thisAnimator.SetFloat("speed", direction.magnitude);
+
+        if (_thisAgent.enabled)
+        {
+            _thisAgent.SetDestination(direction);
+        }
+    }
+    
 
     public virtual void Take()
     {
