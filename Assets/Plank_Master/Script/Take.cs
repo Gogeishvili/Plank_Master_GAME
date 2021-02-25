@@ -5,6 +5,6 @@ using UnityEngine;
 public class Take : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
-        other.GetComponent<Plank>().SetActiveAndDeactive(false);
+        //other.GetComponent<Plank>().SetActiveAndDeactive(false);
     }
 }

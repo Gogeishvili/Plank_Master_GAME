@@ -10,8 +10,14 @@ public class Plank : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    public void SetActiveAndDeactive(bool tag)
+    public void SetActiveAndDeactive(bool flag)
     {
-        meshRenderer.enabled=tag;
+        meshRenderer.enabled = flag;
+
+    }
+
+    public void SetTag(string tag)
+    {
+        gameObject.tag = tag;
     }
 }
