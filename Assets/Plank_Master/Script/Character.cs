@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     [SerializeField] float _maxSpeed = 1;
-    [SerializeField] Animator _targetAnimator = null;
+    [SerializeField] Animator _thisAnimator = null;
     [SerializeField] List<GameObject> _myPlanks = new List<GameObject>();
     [SerializeField] GameObject _plankPrototypePref;
     NavMeshAgent _thisAgent = null;
@@ -14,18 +14,20 @@ public class Character : MonoBehaviour
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
     int _countPlank = 0;
+    bool _isLive = true;
 
     private void Awake()
     {
         _planksParent = transform.GetChild(1);
         _thisAgent = GetComponent<NavMeshAgent>();
         _thisRB = GetComponent<Rigidbody>();
+        _thisAnimator = GetComponent<Animator>();
     }
 
     public virtual void Move(Vector2 direction)
     {
         float speed = _maxSpeed * direction.magnitude;
-        //_targetAnimator.SetFloat("speed", direction.magnitude);
+        //_thisAnimator.SetFloat("speed", direction.magnitude);
         Vector3 forward = new Vector3(direction.x, 0, direction.y);
 
         if (forward.sqrMagnitude > 0)
@@ -39,6 +41,7 @@ public class Character : MonoBehaviour
 
     public virtual void Take()
     {
+
         GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
         _myPlanks.Add(_plank);
         if (_myPlanks.Count == 1)
@@ -68,15 +71,24 @@ public class Character : MonoBehaviour
         }
         _countPlank += 1;
 
+
     }
     public virtual void PutItDown()
     {
-        if (_myPlanks.Count >= 0)
+
+        if (_myPlanks.Count > 0)
         {
             var _p = _myPlanks[_myPlanks.Count - 1];
             _myPlanks.RemoveAt(_myPlanks.Count - 1);
             _countPlank -= 1;
-            _lastPlankLocalPosition = _myPlanks[_myPlanks.Count - 1].transform.localPosition;
+            if (_myPlanks.Count > 0)
+            {
+                _lastPlankLocalPosition = _myPlanks[_myPlanks.Count - 1].transform.localPosition;
+            }
+            else
+            {
+                _lastPlankLocalPosition = Vector3.zero;
+            }
             Destroy(_p);
         }
         else
@@ -88,24 +100,30 @@ public class Character : MonoBehaviour
 
     public virtual void Fail()
     {
+        _isLive = false;
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
-
     }
     private void OnTriggerExit(Collider other)
     {
         Plank _plank = other.GetComponent<Plank>();
         if (other.gameObject.tag == MyStatics.CANTAKE)
         {
-            _plank.SetActiveAndDeactive(false);
-            _plank.SetTag(MyStatics.CANNOTTAKE);
-            Take();
+            if (_isLive)
+            {
+                _plank.SetActiveAndDeactive(false);
+                _plank.SetTag(MyStatics.CANNOTTAKE);
+                Take();
+            }
         }
         else
         {
-            _plank.SetActiveAndDeactive(true);
-            _plank.SetTag(MyStatics.CANTAKE);
-            PutItDown();
+            if (_isLive)
+            {
+                _plank.SetActiveAndDeactive(true);
+                _plank.SetTag(MyStatics.CANTAKE);
+                PutItDown();
+            }
         }
     }
 
