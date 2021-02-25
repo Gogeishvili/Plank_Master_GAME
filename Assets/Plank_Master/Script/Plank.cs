@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plank : MonoBehaviour
 {
-    [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] MeshRenderer meshRenderer=null;
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();

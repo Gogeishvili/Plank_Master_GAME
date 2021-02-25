@@ -45,8 +45,6 @@
      <Compile Include="Assets\Plank_Master\Script\Managers\CamerManager.cs" />
      <Compile Include="Assets\Plank_Master\Script\Plank.cs" />
      <Compile Include="Assets\Plank_Master\Script\Player.cs" />
-     <Compile Include="Assets\Plank_Master\Script\PutItDown.cs" />
-     <Compile Include="Assets\Plank_Master\Script\Take.cs" />
      <None Include="Assets\NavMeshComponents-master\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
