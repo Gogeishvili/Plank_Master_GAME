@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     NavMeshAgent _thisAgent = null;
     Transform _planksParent;
     Vector3 _lastPlankLocalPosition;
+    int _countPlank = 0;
 
     private void Awake()
     {
@@ -33,22 +34,42 @@ public class Character : MonoBehaviour
     {
         GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
         _myPlanks.Add(_plank);
-
         if (_myPlanks.Count == 1)
         {
-            _plank.transform.localPosition = Vector3.zero;
+            if (_countPlank % 2 == 0)
+            {
+                _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, 0, 0);
+            }
+            else
+            {
+                _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, 0, 0);
+            }
             _lastPlankLocalPosition = _plank.transform.localPosition;
         }
         else
         {
-            _plank.transform.localPosition = _lastPlankLocalPosition + new Vector3(0, _plank.transform.localScale.y, 0);
+            if (_countPlank % 2 == 0)
+            {
+                _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
+            }
+            else
+            {
+                _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
+
+            }
             _lastPlankLocalPosition = _plank.transform.localPosition;
         }
+        _countPlank += 1;
 
     }
     public virtual void PutItDown()
     {
-      
+        var _p=_myPlanks[_myPlanks.Count-1];
+        _myPlanks.RemoveAt(_myPlanks.Count-1);
+        _countPlank-=1;
+        _lastPlankLocalPosition=_myPlanks[_myPlanks.Count-1].transform.localPosition;
+        Destroy(_p);
+
     }
     private void OnTriggerExit(Collider other)
     {
