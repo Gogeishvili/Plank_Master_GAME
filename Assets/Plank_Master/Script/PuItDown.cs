@@ -17,9 +17,10 @@ public class PuItDown : MonoBehaviour
             Plank _plank = other.GetComponent<Plank>();
             if (other.gameObject.tag == MyStatics.CANNOTTAKE)
             {
+                
                 _plank.SetActiveAndDeactive(true);
                 _plank.isActive=true;
-                _baseCharacter.PutItDown();
+                _baseCharacter.PutItDown(2);
 
             }
 

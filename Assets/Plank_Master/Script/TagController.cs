@@ -14,13 +14,13 @@ public class TagController : MonoBehaviour
     {
         if (_baseCharacter.isLive)
         {
-
             Plank _plank = other.GetComponent<Plank>();
             if (other.gameObject.tag == MyStatics.CANNOTTAKE && _plank.isActive)
             {
-                _plank.SetTag(MyStatics.CANTAKE);
-                _plank.isActive=true;
-
+                _plank.SetActiveAndDeactive(false);
+                _plank.SetTag(MyStatics.CANNOTTAKE);
+                _plank.isActive=false;
+                _plank.Drop();
             }
 
         }

@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     Transform _planksParent = null;
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
-    int _countPlank = 0;
+    public int _countPlank = 0;
 
     private void Awake()
     {
@@ -55,48 +55,55 @@ public class Character : MonoBehaviour
     }
 
 
-    public virtual void Take()
+    public virtual void Take(int value)
     {
-
-        GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
-        _myPlanks.Add(_plank);
-        if (_myPlanks.Count == 1)
+        if (_countPlank % 2 == 0)
         {
-            if (_countPlank % 2 == 0)
+            GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
+            _myPlanks.Add(_plank);
+            
+            if (_myPlanks.Count == 1)
             {
-                _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, 0, 0);
+                if (_countPlank % 2 == 0)
+                {
+                    _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, 0, 0);
+                }
+                else
+                {
+                    _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, 0, 0);
+                }
+                _lastPlankLocalPosition = _plank.transform.localPosition;
             }
             else
             {
-                _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, 0, 0);
-            }
-            _lastPlankLocalPosition = _plank.transform.localPosition;
-        }
-        else
-        {
-            if (_countPlank % 2 == 0)
-            {
-                _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
-            }
-            else
-            {
-                _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
+                
+                if (_countPlank % 2 == 0)
+                {
+                    _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
+                }
+                else
+                {
+                    _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
 
+                }
+                _lastPlankLocalPosition = _plank.transform.localPosition;
             }
-            _lastPlankLocalPosition = _plank.transform.localPosition;
         }
-        _countPlank += 1;
-
+        _countPlank += value;
 
     }
-    public virtual void PutItDown()
+    public virtual void PutItDown(int value)
     {
+        if (_countPlank <= 0)
+        {
+            Fail();
+        }
 
         if (_myPlanks.Count > 0)
         {
             var _p = _myPlanks[_myPlanks.Count - 1];
             _myPlanks.RemoveAt(_myPlanks.Count - 1);
-            _countPlank -= 1;
+            _countPlank -= value;
             if (_myPlanks.Count > 0)
             {
                 _lastPlankLocalPosition = _myPlanks[_myPlanks.Count - 1].transform.localPosition;
@@ -107,18 +114,15 @@ public class Character : MonoBehaviour
             }
             Destroy(_p);
         }
-        else
-        {
-            Fail();
-        }
-
     }
 
     public virtual void Fail()
     {
+        
         isLive = false;
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
+        _thisRB.AddForce(transform.forward*300*Time.deltaTime,ForceMode.VelocityChange);
     }
 
 }

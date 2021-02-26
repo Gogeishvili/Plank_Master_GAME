@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Plank_Master\Script\Bot.cs" />
      <Compile Include="Assets\Plank_Master\Script\Character.cs" />
+     <Compile Include="Assets\Plank_Master\Script\DestroyObjects.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\EventVector2.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\Extensions.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\MyStatics.cs" />

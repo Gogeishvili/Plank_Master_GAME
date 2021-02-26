@@ -21,7 +21,7 @@ public class Take : MonoBehaviour
                 _plank.SetActiveAndDeactive(false);
                 _plank.isActive=false;
                 _plank.SetTag(MyStatics.CANNOTTAKE);
-                _baseCharacter.Take();
+                _baseCharacter.Take(1);
             }
 
         }
