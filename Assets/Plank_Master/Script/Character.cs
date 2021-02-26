@@ -120,7 +120,8 @@ public class Character : MonoBehaviour
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
     }
-    private void OnTriggerExit(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (_isLive)
         {
@@ -144,5 +145,5 @@ public class Character : MonoBehaviour
             }
         }
     }
-
+   
 }
