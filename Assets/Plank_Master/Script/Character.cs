@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
 
         }
     }
-     public virtual void Move(Vector3 direction)
+    public virtual void Move(Vector3 direction)
     {
 
         float speed = _maxSpeed * direction.magnitude;
@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
             _thisAgent.SetDestination(direction);
         }
     }
-    
+
 
     public virtual void Take()
     {
@@ -122,23 +122,25 @@ public class Character : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Plank _plank = other.GetComponent<Plank>();
-        if (other.gameObject.tag == MyStatics.CANTAKE)
+        if (_isLive)
         {
-            if (_isLive)
+
+            Plank _plank = other.GetComponent<Plank>();
+            if (other.gameObject.tag == MyStatics.CANTAKE)
             {
+
                 _plank.SetActiveAndDeactive(false);
                 _plank.SetTag(MyStatics.CANNOTTAKE);
                 Take();
+
             }
-        }
-        else
-        {
-            if (_isLive)
+            else
             {
+
                 _plank.SetActiveAndDeactive(true);
                 _plank.SetTag(MyStatics.CANTAKE);
                 PutItDown();
+
             }
         }
     }

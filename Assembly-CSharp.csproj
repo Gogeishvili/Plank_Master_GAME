@@ -38,12 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\Plank_Master\Script\Bot.cs" />
      <Compile Include="Assets\Plank_Master\Script\Character.cs" />
+     <Compile Include="Assets\Plank_Master\Script\GridSpawner.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\EventVector2.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\Extensions.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\MyStatics.cs" />
      <Compile Include="Assets\Plank_Master\Script\Helper\Singleton.cs" />
      <Compile Include="Assets\Plank_Master\Script\Joystick.cs" />
      <Compile Include="Assets\Plank_Master\Script\Managers\CamerManager.cs" />
+     <Compile Include="Assets\Plank_Master\Script\Managers\NavMeshmanager.cs" />
      <Compile Include="Assets\Plank_Master\Script\Plank.cs" />
      <Compile Include="Assets\Plank_Master\Script\Player.cs" />
      <None Include="Assets\NavMeshComponents-master\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
