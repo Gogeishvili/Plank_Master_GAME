@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    public bool isLive = true;
     [SerializeField] protected float _maxSpeed = 1;
     [SerializeField] protected bool _isPlayer = false;
     [SerializeField] Animator _thisAnimator = null;
@@ -15,7 +16,6 @@ public class Character : MonoBehaviour
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
     int _countPlank = 0;
-    bool _isLive = true;
 
     private void Awake()
     {
@@ -116,34 +116,9 @@ public class Character : MonoBehaviour
 
     public virtual void Fail()
     {
-        _isLive = false;
+        isLive = false;
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (_isLive)
-        {
-
-            Plank _plank = other.GetComponent<Plank>();
-            if (other.gameObject.tag == MyStatics.CANTAKE)
-            {
-
-                _plank.SetActiveAndDeactive(false);
-                _plank.SetTag(MyStatics.CANNOTTAKE);
-                Take();
-
-            }
-            else
-            {
-
-                _plank.SetActiveAndDeactive(true);
-                _plank.SetTag(MyStatics.CANTAKE);
-                PutItDown();
-
-            }
-        }
-    }
-   
 }

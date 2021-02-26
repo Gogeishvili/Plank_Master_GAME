@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Plank : MonoBehaviour
 {
+    public bool isActive=true;
     [SerializeField] MeshRenderer meshRenderer=null;
     void Start()
     {
