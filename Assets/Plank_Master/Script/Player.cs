@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Player : Character
 {
-   
-   
+    [SerializeField] RectTransform _title = null;
+    [SerializeField] Camera _camera = null;
+
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
+
+    private void Update()
+    {
+        if (_title != null && _camera != null)
+            _title.transform.forward = _camera.transform.forward;
+    }
+
 }
