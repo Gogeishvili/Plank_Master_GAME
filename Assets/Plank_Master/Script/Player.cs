@@ -14,8 +14,12 @@ public class Player : Character
 
     private void Update()
     {
-        if (_title != null && _camera != null)
-            _title.transform.forward = _camera.transform.forward;
+        if (GameManager.instance.gameOn)
+        {
+            if (_title != null && _camera != null)
+                _title.transform.forward = _camera.transform.forward;
+        }
+
     }
 
 }

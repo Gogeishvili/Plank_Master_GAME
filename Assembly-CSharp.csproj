@@ -48,6 +48,7 @@
      <Compile Include="Assets\Plank_Master\Script\Managers\GameManager.cs" />
      <Compile Include="Assets\Plank_Master\Script\Managers\GridSpawner.cs" />
      <Compile Include="Assets\Plank_Master\Script\Managers\NavMeshManager.cs" />
+     <Compile Include="Assets\Plank_Master\Script\Managers\UiManager.cs" />
      <Compile Include="Assets\Plank_Master\Script\Plank.cs" />
      <Compile Include="Assets\Plank_Master\Script\Player.cs" />
      <Compile Include="Assets\Plank_Master\Script\PuItDown.cs" />

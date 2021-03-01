@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool gameOn = false;
+
+    [SerializeField] List<Character> _players = new List<Character>();
+
+    private void Awake()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void InitGame()
     {
-        
+        gameOn = false;
+        UiManager.instance.LoadScene(Scenes.MENU);
     }
+    public void GameOn()
+    {
+        gameOn = true;
+        UiManager.instance.LoadScene(Scenes.GAMEON);
+    }
+    public void GameLoss()
+    {
+
+    }
+    public void GameWin()
+    {
+
+    }
+
 }
