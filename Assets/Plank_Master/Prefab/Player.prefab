@@ -623,9 +623,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc8d2fee7fbc3a4983656262e26467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   isLive: 1
   _maxSpeed: 5
-  _isPlayer: 1
   _thisAnimator: {fileID: 0}
   _myPlanks: []
   _plankPrototypePref: {fileID: 1239080157220114819, guid: 072b4012ff8715a4f88c0b00550d8cfd,

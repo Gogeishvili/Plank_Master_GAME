@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    public bool isPlayer = false;
     public bool isLive = true;
     [SerializeField] protected float _maxSpeed = 1;
-    [SerializeField] protected bool _isPlayer = false;
     [SerializeField] Animator _thisAnimator = null;
     [SerializeField] List<GameObject> _myPlanks = new List<GameObject>();
     [SerializeField] GameObject _plankPrototypePref;
@@ -102,11 +102,13 @@ public class Character : MonoBehaviour
 
     public virtual void Fail()
     {
-
+        GameManager.instance.UpdatePlayerInfo(this);
         isLive = false;
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
         _thisRB.AddForce(transform.forward * 300 * Time.deltaTime, ForceMode.VelocityChange);
     }
+
+
 
 }

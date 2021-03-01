@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,7 +11,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-
+        InitGame();
     }
 
     void InitGame()
@@ -25,11 +26,34 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameLoss()
     {
-
+        gameOn = false;
+        UiManager.instance.LoadScene(Scenes.LOSS);
     }
     public void GameWin()
     {
+        gameOn=false;
+        UiManager.instance.LoadScene(Scenes.WIN);
+    }
 
+    public void UpdatePlayerInfo(Character player)
+    {
+
+        if (player.isPlayer)
+        {
+            GameLoss();
+        }
+       
+        _players.Remove(player);
+
+         if (_players.Count == 1 && _players[0].isPlayer)
+        {
+            GameWin();
+        }
+
+    }
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
