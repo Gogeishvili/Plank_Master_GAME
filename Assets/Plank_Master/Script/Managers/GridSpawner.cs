@@ -5,8 +5,6 @@ using UnityEngine;
 public class GridSpawner : Singleton<GridSpawner>
 {
 
-    [SerializeField] int _indexX = 0;
-    [SerializeField] int _indexZ = 0;
     [SerializeField] Plank _groundPref;
     [SerializeField] int _countInLine = 4;
     [SerializeField] int _lineCount = 3;
@@ -61,9 +59,9 @@ public class GridSpawner : Singleton<GridSpawner>
 
         NavMeshManager.instance.BakenavMesh();
 
-        foreach (var item in _allPlanks)
+        foreach (var _p in _allPlanks)
         {
-            item.transform.localScale = new Vector3(0.8f, item.localScale.y, 0.8f);
+            _p.transform.localScale = new Vector3(0.8f, _p.localScale.y, 0.8f);
         }
 
     }

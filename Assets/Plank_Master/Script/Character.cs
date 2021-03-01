@@ -61,31 +61,15 @@ public class Character : MonoBehaviour
         {
             GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
             _myPlanks.Add(_plank);
-            
+
             if (_myPlanks.Count == 1)
             {
-                if (_countPlank % 2 == 0)
-                {
-                    _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, 0, 0);
-                }
-                else
-                {
-                    _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, 0, 0);
-                }
+                _plank.transform.localPosition = Vector3.zero;
                 _lastPlankLocalPosition = _plank.transform.localPosition;
             }
             else
             {
-                
-                if (_countPlank % 2 == 0)
-                {
-                    _plank.transform.localPosition = new Vector3(-_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
-                }
-                else
-                {
-                    _plank.transform.localPosition = new Vector3(_plank.transform.localScale.x / 2, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
-
-                }
+                _plank.transform.localPosition = new Vector3(0, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
                 _lastPlankLocalPosition = _plank.transform.localPosition;
             }
         }
@@ -118,11 +102,11 @@ public class Character : MonoBehaviour
 
     public virtual void Fail()
     {
-        
+
         isLive = false;
         _thisAgent.enabled = false;
         _thisRB.isKinematic = false;
-        _thisRB.AddForce(transform.forward*300*Time.deltaTime,ForceMode.VelocityChange);
+        _thisRB.AddForce(transform.forward * 300 * Time.deltaTime, ForceMode.VelocityChange);
     }
 
 }
