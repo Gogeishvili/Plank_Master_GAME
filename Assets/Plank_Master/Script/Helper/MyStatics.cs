@@ -11,5 +11,6 @@ public static class MyStatics
     public static string IDLE_ANIMATION = "Idle";
     public static string RUN_ANIMATION = "Run";
     public static string PLANK_PARENT = "Planks";
+    public static string FALLING_ANIMATION="Falling";
 
 }

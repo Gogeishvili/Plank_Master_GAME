@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   isLive: 1
-  _maxSpeed: 5
+  _maxSpeed: 10
   _thisAnimator: {fileID: 0}
   _plankPrototypePref: {fileID: 1239080157220114819, guid: 072b4012ff8715a4f88c0b00550d8cfd,
     type: 3}

@@ -8,6 +8,7 @@ public class GridSpawner : Singleton<GridSpawner>
     [SerializeField] Plank _groundPref;
     [SerializeField] int _countInLine = 4;
     [SerializeField] int _lineCount = 3;
+    [SerializeField] float _gap = 0.2f;
     float _xScale = 0;
     float _zScale = 0;
     float _lineLengthRightLeft = 0;
@@ -61,7 +62,7 @@ public class GridSpawner : Singleton<GridSpawner>
 
         foreach (var _p in _allPlanks)
         {
-            _p.transform.localScale = new Vector3(0.8f, _p.localScale.y, 0.8f);
+            _p.transform.localScale = new Vector3(_p.transform.localScale.x - _gap, _p.localScale.y, _p.transform.localScale.z - _gap);
         }
 
     }

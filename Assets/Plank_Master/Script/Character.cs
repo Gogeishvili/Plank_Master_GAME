@@ -51,10 +51,16 @@ public class Character : MonoBehaviour
     }
     public virtual void Move(Vector3 direction)
     {
-
+        
         if (_thisAgent.enabled)
         {
             _thisAgent.SetDestination(direction);
+            if(direction.sqrMagnitude>0){
+                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
+            }
+            else{
+                _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, false);
+            }
         }
     }
 
@@ -84,7 +90,7 @@ public class Character : MonoBehaviour
     {
         if (_countPlank <= 0)
         {
-            Fail();
+            Falling();
         }
 
         if (_myPlanks.Count > 0)
@@ -104,8 +110,10 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void Fail()
+    public virtual void Falling()
     {
+        _thisAnimator.Play(MyStatics.FALLING_ANIMATION);
+       
         GameManager.instance.UpdatePlayerInfo(this);
         isLive = false;
         _thisAgent.enabled = false;
