@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        _planksParent=transform.Find("Planks");
+        _planksParent = transform.Find(MyStatics.PLANK_PARENT);
         _thisAgent = GetComponent<NavMeshAgent>();
         _thisRB = GetComponent<Rigidbody>();
         _thisAnimator = GetComponent<Animator>();
@@ -29,24 +29,28 @@ public class Character : MonoBehaviour
     {
 
         float speed = _maxSpeed * direction.magnitude;
-        //_thisAnimator.SetFloat("speed", direction.magnitude);
 
         if (_thisAgent.enabled)
         {
-            Vector3 forward = new Vector3(direction.x, 0, direction.y);
+            Vector3 _forward = new Vector3(direction.x, 0, direction.y);
 
-            if (forward.sqrMagnitude > 0)
-                transform.forward = forward;
+            if (_forward.sqrMagnitude > 0)
+            {
+                transform.forward = _forward;   
+                _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
+            }
+            else
+            {
+                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, false);
+            }
 
-            _thisAgent.Move(forward * Time.deltaTime * speed);
+            _thisAgent.Move(_forward * Time.deltaTime * speed);
 
         }
+
     }
     public virtual void Move(Vector3 direction)
     {
-
-        float speed = _maxSpeed * direction.magnitude;
-        //_thisAnimator.SetFloat("speed", direction.magnitude);
 
         if (_thisAgent.enabled)
         {

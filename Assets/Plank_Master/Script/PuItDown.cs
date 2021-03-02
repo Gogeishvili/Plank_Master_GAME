@@ -15,7 +15,7 @@ public class PuItDown : MonoBehaviour
         if (_baseCharacter.isLive)
         {
             Plank _plank = other.GetComponent<Plank>();
-            if (other.gameObject.tag == MyStatics.CANNOTTAKE)
+            if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE)
             {
                 
                 _plank.SetActiveAndDeactive(true);
