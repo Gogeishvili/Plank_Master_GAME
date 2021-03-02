@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     public bool isPlayer = false;
     public bool isLive = true;
     [SerializeField] protected float _maxSpeed = 1;
+    [SerializeField] float _gap = 0.2f;
     [SerializeField] Animator _thisAnimator = null;
     [SerializeField] GameObject _plankPrototypePref;
     protected NavMeshAgent _thisAgent = null;
@@ -36,12 +37,12 @@ public class Character : MonoBehaviour
 
             if (_forward.sqrMagnitude > 0)
             {
-                transform.forward = _forward;   
+                transform.forward = _forward;
                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
             }
             else
             {
-                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, false);
+                _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, false);
             }
 
             _thisAgent.Move(_forward * Time.deltaTime * speed);
@@ -51,14 +52,16 @@ public class Character : MonoBehaviour
     }
     public virtual void Move(Vector3 direction)
     {
-        
+
         if (_thisAgent.enabled)
         {
             _thisAgent.SetDestination(direction);
-            if(direction.sqrMagnitude>0){
-                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
+            if (direction.sqrMagnitude > 0)
+            {
+                _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
             }
-            else{
+            else
+            {
                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, false);
             }
         }
@@ -79,7 +82,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                _plank.transform.localPosition = new Vector3(0, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2, 0);
+                _plank.transform.localPosition = new Vector3(0, _lastPlankLocalPosition.y + _plank.transform.localScale.y / 2 + _gap, 0);
                 _lastPlankLocalPosition = _plank.transform.localPosition;
             }
         }
@@ -113,7 +116,7 @@ public class Character : MonoBehaviour
     public virtual void Falling()
     {
         _thisAnimator.Play(MyStatics.FALLING_ANIMATION);
-       
+
         GameManager.instance.UpdatePlayerInfo(this);
         isLive = false;
         _thisAgent.enabled = false;
