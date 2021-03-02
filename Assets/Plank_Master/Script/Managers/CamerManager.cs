@@ -12,7 +12,6 @@ public class CamerManager : Singleton<CamerManager>
         _offset = transform.position - lookTarget.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (lookTarget != null)

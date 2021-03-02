@@ -9,17 +9,17 @@ public class Character : MonoBehaviour
     public bool isLive = true;
     [SerializeField] protected float _maxSpeed = 1;
     [SerializeField] Animator _thisAnimator = null;
-    [SerializeField] List<GameObject> _myPlanks = new List<GameObject>();
     [SerializeField] GameObject _plankPrototypePref;
     protected NavMeshAgent _thisAgent = null;
+    List<GameObject> _myPlanks = new List<GameObject>();
     Transform _planksParent = null;
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
-    public int _countPlank = 0;
+    int _countPlank = 0;
 
     private void Awake()
     {
-        _planksParent = transform.GetChild(1);
+        _planksParent=transform.Find("Planks");
         _thisAgent = GetComponent<NavMeshAgent>();
         _thisRB = GetComponent<Rigidbody>();
         _thisAnimator = GetComponent<Animator>();

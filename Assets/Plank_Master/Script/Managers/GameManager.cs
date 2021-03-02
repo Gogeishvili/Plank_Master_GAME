@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public bool gameOn = false;
 
-    [SerializeField] List<Character> _players = new List<Character>();
+    [SerializeField] List<Character> _Characters = new List<Character>();
 
     private void Awake()
     {
@@ -24,12 +24,12 @@ public class GameManager : Singleton<GameManager>
         gameOn = true;
         UiManager.instance.LoadScene(Scenes.GAMEON);
     }
-    public void GameLoss()
+    void GameLoss()
     {
         gameOn = false;
         UiManager.instance.LoadScene(Scenes.LOSS);
     }
-    public void GameWin()
+    void GameWin()
     {
         gameOn=false;
         UiManager.instance.LoadScene(Scenes.WIN);
@@ -43,9 +43,9 @@ public class GameManager : Singleton<GameManager>
             GameLoss();
         }
        
-        _players.Remove(player);
+        _Characters.Remove(player);
 
-         if (_players.Count == 1 && _players[0].isPlayer)
+         if (_Characters.Count == 1 && _Characters[0].isPlayer)
         {
             GameWin();
         }

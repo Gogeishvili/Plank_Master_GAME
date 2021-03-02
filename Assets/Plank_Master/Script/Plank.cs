@@ -17,7 +17,6 @@ public class Plank : MonoBehaviour
     public void SetActiveAndDeactive(bool flag)
     {
         meshRenderer.enabled = flag;
-
     }
 
     public void SetTag(string tag)
@@ -29,6 +28,7 @@ public class Plank : MonoBehaviour
     {
         var _p=Instantiate(_plankPrototype);
         _p.transform.position=transform.position;
+        _p.gameObject.AddComponent<BoxCollider>().isTrigger=true;
         _p.gameObject.AddComponent<Rigidbody>();
 
     }

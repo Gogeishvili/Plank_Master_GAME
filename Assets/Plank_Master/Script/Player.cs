@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Character
 {
     [SerializeField] RectTransform _title = null;
-    [SerializeField] Camera _camera = null;
+    Camera _camera = null;
 
     private void Start()
     {
