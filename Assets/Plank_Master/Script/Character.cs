@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     {
 
         float speed = _maxSpeed * direction.magnitude;
-        _thisAnimator.SetFloat("speed", direction.magnitude);
+        //_thisAnimator.SetFloat("speed", direction.magnitude);
 
         if (_thisAgent.enabled)
         {
@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
     {
 
         float speed = _maxSpeed * direction.magnitude;
-        _thisAnimator.SetFloat("speed", direction.magnitude);
+        //_thisAnimator.SetFloat("speed", direction.magnitude);
 
         if (_thisAgent.enabled)
         {
