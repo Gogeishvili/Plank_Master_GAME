@@ -9,7 +9,6 @@ public class GridSpawner : Singleton<GridSpawner>
     [SerializeField] Plank _groundPref;
     [SerializeField] int _countInLine = 4;
     [SerializeField] int _lineCount = 3;
-    [SerializeField] float _gap = 0.2f;
     float _xScale = 0;
     float _zScale = 0;
     float _lineLengthRightLeft = 0;
@@ -64,12 +63,6 @@ public class GridSpawner : Singleton<GridSpawner>
         }
 
         NavMeshManager.instance.BakenavMesh();
-
-        foreach (var _p in _allPlanks)
-        {
-            _p.transform.localScale = new Vector3(_p.transform.localScale.x - _gap, _p.localScale.y, _p.transform.localScale.z - _gap);
-        }
-
     }
 
     void SpawnPlankOnGroung(Vector3 pos)
@@ -78,7 +71,7 @@ public class GridSpawner : Singleton<GridSpawner>
         for (int i = 0; i < 2; i++)
         {
             var _fp = Instantiate(_plankOnGroundPrototype);
-            _fp.position = new Vector3(pos.x + Random.Range(-1, 1), pos.y + Random.Range(0.1f, 0.3f), pos.z);
+            _fp.position = new Vector3(pos.x + Random.Range(-1, 1), pos.y + Random.Range(0.2f, 0.6f), pos.z);
             _fp.eulerAngles=new Vector3(Random.Range(-4,4),Random.Range(-90,90),Random.Range(-4,4));
         }
     }

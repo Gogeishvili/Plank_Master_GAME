@@ -18,7 +18,7 @@ public class Take : MonoBehaviour
             Plank _plank = other.GetComponent<Plank>();
             if (other.gameObject.tag == MyStatics.CAN_TAKE && _plank.isActive)
             {
-                _plank.SetActiveAndDeactive(false,_baseCharacter.myPlankColor);
+                _plank.SetActiveAndDeactive(false,_baseCharacter.myColor,transform);
                 _plank.isActive=false;
                 _plank.SetTag(MyStatics.CAN_NOT_TAKE);
                 _baseCharacter.Take(1);

@@ -18,7 +18,7 @@ public class PuItDown : MonoBehaviour
             if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE)
             {
                 
-                _plank.SetActiveAndDeactive(true,_baseCharacter.myPlankColor);
+                _plank.SetActiveAndDeactive(true,_baseCharacter.myColor,transform);
                 _plank.isActive=true;
                 _baseCharacter.PutItDown(2);
 

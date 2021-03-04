@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
 {
     public bool isPlayer = false;
     public bool isLive = true;
-    public Color myPlankColor;
+    public Color myColor;
     [SerializeField] protected float _maxSpeed = 1;
     [SerializeField] float _gap = 0.2f;
     [SerializeField] Animator _thisAnimator = null;
@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     Rigidbody _thisRB = null;
     int _countPlank = 0;
     
-    
+
    
 
     private void Awake()
@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
             GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
             _myPlanks.Add(_plank);
 
-            _plank.GetComponent<MeshRenderer>().material.SetColor("_Color",myPlankColor);
+            _plank.GetComponent<MeshRenderer>().material.SetColor("_Color",myColor);
 
             if (_myPlanks.Count == 1)
             {

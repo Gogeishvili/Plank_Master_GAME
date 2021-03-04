@@ -16,7 +16,7 @@ public class Screenmanager : MonoBehaviour
     {
         for (int i = 0; i < _players.Count; i++)
         {
-            Color _color=_players[i].GetComponent<Character>().myPlankColor;
+            Color _color=_players[i].GetComponent<Character>().myColor;
             var _indexsator = Instantiate(_indicator, transform);
             _indexsator.GetChild(0).gameObject.GetComponent<Image>().color=new Color(_color.r,_color.g,_color.b);
             _indicators.Add(_indexsator);
