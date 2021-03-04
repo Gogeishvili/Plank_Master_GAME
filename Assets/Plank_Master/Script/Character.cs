@@ -18,9 +18,11 @@ public class Character : MonoBehaviour
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
     int _countPlank = 0;
-    
 
-   
+    GameObject _indexator { get; set; }
+
+
+
 
     private void Awake()
     {
@@ -28,9 +30,20 @@ public class Character : MonoBehaviour
         _thisAgent = GetComponent<NavMeshAgent>();
         _thisRB = GetComponent<Rigidbody>();
         _thisAnimator = GetComponent<Animator>();
-        
+
     }
-    Vector3 _first;
+
+    public GameObject Indexator
+    {
+        get
+        {
+            return _indexator;
+        }
+        set
+        {
+            _indexator = value;
+        }
+    }
     public virtual void Move(Vector2 direction)
     {
 
@@ -74,6 +87,8 @@ public class Character : MonoBehaviour
     }
 
 
+
+
     public virtual void Take(int value)
     {
         if (_countPlank % 2 == 0)
@@ -81,7 +96,7 @@ public class Character : MonoBehaviour
             GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
             _myPlanks.Add(_plank);
 
-            _plank.GetComponent<MeshRenderer>().material.SetColor("_Color",myColor);
+            _plank.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
 
             if (_myPlanks.Count == 1)
             {
@@ -124,6 +139,7 @@ public class Character : MonoBehaviour
     public virtual void Falling()
     {
         _thisAnimator.Play(MyStatics.FALLING_ANIMATION);
+        Destroy(_indexator);
 
         GameManager.instance.UpdatePlayerInfo(this);
         isLive = false;
