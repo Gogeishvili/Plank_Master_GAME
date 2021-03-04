@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     public bool isPlayer = false;
     public bool isLive = true;
+    public Color myPlankColor;
     [SerializeField] protected float _maxSpeed = 1;
     [SerializeField] float _gap = 0.2f;
     [SerializeField] Animator _thisAnimator = null;
@@ -17,6 +18,9 @@ public class Character : MonoBehaviour
     Vector3 _lastPlankLocalPosition = default;
     Rigidbody _thisRB = null;
     int _countPlank = 0;
+    
+    
+   
 
     private void Awake()
     {
@@ -24,8 +28,9 @@ public class Character : MonoBehaviour
         _thisAgent = GetComponent<NavMeshAgent>();
         _thisRB = GetComponent<Rigidbody>();
         _thisAnimator = GetComponent<Animator>();
+        
     }
-
+    Vector3 _first;
     public virtual void Move(Vector2 direction)
     {
 
@@ -37,6 +42,7 @@ public class Character : MonoBehaviour
 
             if (_forward.sqrMagnitude > 0)
             {
+
                 transform.forward = _forward;
                 _thisAnimator.SetBool(MyStatics.RUN_ANIMATION, true);
             }
@@ -74,6 +80,8 @@ public class Character : MonoBehaviour
         {
             GameObject _plank = Instantiate(_plankPrototypePref, _planksParent);
             _myPlanks.Add(_plank);
+
+            _plank.GetComponent<MeshRenderer>().material.SetColor("_Color",myPlankColor);
 
             if (_myPlanks.Count == 1)
             {

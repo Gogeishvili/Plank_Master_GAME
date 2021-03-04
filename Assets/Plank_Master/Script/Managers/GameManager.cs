@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     }
     void GameWin()
     {
-        gameOn=false;
+        gameOn = false;
         UiManager.instance.LoadScene(Scenes.WIN);
     }
 
@@ -42,13 +42,14 @@ public class GameManager : Singleton<GameManager>
         {
             GameLoss();
         }
-       
+
         _Characters.Remove(player);
 
-         if (_Characters.Count == 1 && _Characters[0].isPlayer)
-        {
-            GameWin();
-        }
+        //game win
+        //  if (_Characters.Count == 1 && _Characters[0].isPlayer)
+        // {
+        //     GameWin();
+        // }
 
     }
     public void LoadScene()

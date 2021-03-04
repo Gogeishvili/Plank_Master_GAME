@@ -14,11 +14,11 @@ public class Joystick : MonoBehaviour
     void Update()
     {
         Vector2 mousePosition = Input.mousePosition;
+
         if (Input.GetMouseButtonDown(0))
         {
             _touchStart = mousePosition;
             onDragStart.Invoke(Vector2.zero);
-
         }
         else if (Input.GetMouseButton(0))
         {
@@ -29,5 +29,8 @@ public class Joystick : MonoBehaviour
         {
             onDragEnd.Invoke(Vector2.zero);
         }
+        // float length = Mathf.Clamp(Vector2.Distance(mousePosition, _touchStart), 0, _maxLength);
+        // onDrag.Invoke((mousePosition - _touchStart).normalized * length.Remap(0, _maxLength, 0, 1));
+
     }
 }

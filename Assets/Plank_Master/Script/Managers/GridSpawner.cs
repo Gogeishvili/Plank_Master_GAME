@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridSpawner : Singleton<GridSpawner>
 {
 
+    [SerializeField] Transform _plankOnGroundPrototype;
     [SerializeField] Plank _groundPref;
     [SerializeField] int _countInLine = 4;
     [SerializeField] int _lineCount = 3;
@@ -45,15 +46,19 @@ public class GridSpawner : Singleton<GridSpawner>
                     _g.transform.SetParent(transform);
                     _allPlanks.Add(_g.transform);
 
+
                 }
                 else
                 {
+                   
                     var _g = Instantiate(_groundPref);
                     _g.transform.position = new Vector3(_position.x + _xScale, 0, _position.z);
                     _position = _g.transform.position;
                     _g.transform.SetParent(transform);
                     _allPlanks.Add(_g.transform);
+
                 }
+               SpawnPlankOnGroung(_position);
             }
             _position = new Vector3(-_lineLengthRightLeft / 2, 0, _position.z - _zScale);
         }
@@ -65,6 +70,17 @@ public class GridSpawner : Singleton<GridSpawner>
             _p.transform.localScale = new Vector3(_p.transform.localScale.x - _gap, _p.localScale.y, _p.transform.localScale.z - _gap);
         }
 
+    }
+
+    void SpawnPlankOnGroung(Vector3 pos)
+    {
+      
+        for (int i = 0; i < 2; i++)
+        {
+            var _fp = Instantiate(_plankOnGroundPrototype);
+            _fp.position = new Vector3(pos.x + Random.Range(-1, 1), pos.y + Random.Range(0.1f, 0.3f), pos.z);
+            _fp.eulerAngles=new Vector3(Random.Range(-4,4),Random.Range(-90,90),Random.Range(-4,4));
+        }
     }
 
 }

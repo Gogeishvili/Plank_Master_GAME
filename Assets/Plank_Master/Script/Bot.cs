@@ -17,7 +17,6 @@ public class Bot : Character
     {
         if (GameManager.instance.gameOn)
         {
-
             Move(_direction);
 
             if (_thisAgent.velocity.magnitude < 0.2f)

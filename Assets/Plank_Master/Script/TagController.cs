@@ -15,12 +15,13 @@ public class TagController : MonoBehaviour
         if (_baseCharacter.isLive)
         {
             Plank _plank = other.GetComponent<Plank>();
+            
             if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE && _plank.isActive)
             {
-                _plank.SetActiveAndDeactive(false);
+                _plank.SetActiveAndDeactive(false,_baseCharacter.myPlankColor);
                 _plank.SetTag(MyStatics.CAN_NOT_TAKE);
                 _plank.isActive=false;
-                _plank.Drop();
+                _plank.Drop(_baseCharacter.myPlankColor);
             }
 
         }
