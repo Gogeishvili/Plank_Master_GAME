@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     public bool isPlayer = false;
     public bool isLive = true;
+    public GameObject indicator { get; set; }
     public Color myColor;
     [SerializeField] protected float _maxSpeed = 1;
     [SerializeField] float _gap = 0.2f;
@@ -19,10 +20,6 @@ public class Character : MonoBehaviour
     Rigidbody _thisRB = null;
     int _countPlank = 0;
 
-    GameObject _indexator { get; set; }
-
-
-
 
     private void Awake()
     {
@@ -33,17 +30,7 @@ public class Character : MonoBehaviour
 
     }
 
-    public GameObject Indexator
-    {
-        get
-        {
-            return _indexator;
-        }
-        set
-        {
-            _indexator = value;
-        }
-    }
+   
     public virtual void Move(Vector2 direction)
     {
 
@@ -139,7 +126,7 @@ public class Character : MonoBehaviour
     public virtual void Falling()
     {
         _thisAnimator.Play(MyStatics.FALLING_ANIMATION);
-        Destroy(_indexator);
+        Destroy(indicator);
 
         GameManager.instance.UpdatePlayerInfo(this);
         isLive = false;

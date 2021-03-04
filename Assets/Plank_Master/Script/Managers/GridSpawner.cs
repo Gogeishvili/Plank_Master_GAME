@@ -45,7 +45,6 @@ public class GridSpawner : Singleton<GridSpawner>
                     _g.transform.SetParent(transform);
                     _allPlanks.Add(_g.transform);
 
-
                 }
                 else
                 {
