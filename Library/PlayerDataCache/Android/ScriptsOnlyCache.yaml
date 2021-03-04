@@ -9,8 +9,10 @@ ScriptsOnlyBuild:
     - Joystick
     - NavMeshManager
     - Plank
+    - PlankOnGround
     - Player
     - PuItDown
+    - Screenmanager
     - TagController
     - Take
     - UiManager
@@ -23,10 +25,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -82,51 +82,55 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11254}
+      Script: {instanceID: 11236}
     - Class: 114
-      Script: {instanceID: 11374}
+      Script: {instanceID: 11256}
     - Class: 114
-      Script: {instanceID: 11434}
+      Script: {instanceID: 11376}
     - Class: 114
-      Script: {instanceID: 11476}
+      Script: {instanceID: 11436}
     - Class: 114
       Script: {instanceID: 11504}
     - Class: 114
       Script: {instanceID: 11562}
     - Class: 114
-      Script: {instanceID: 11882}
+      Script: {instanceID: 11884}
     - Class: 114
-      Script: {instanceID: 12170}
+      Script: {instanceID: 11912}
     - Class: 114
-      Script: {instanceID: 12216}
+      Script: {instanceID: 12176}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12222}
     - Class: 114
-      Script: {instanceID: 12396}
+      Script: {instanceID: 12312}
     - Class: 114
-      Script: {instanceID: 12412}
+      Script: {instanceID: 12402}
     - Class: 114
-      Script: {instanceID: 12602}
+      Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12630}
+      Script: {instanceID: 12608}
     - Class: 114
-      Script: {instanceID: 12646}
+      Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 12776}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12814}
+      Script: {instanceID: 12654}
     - Class: 114
-      Script: {instanceID: 12832}
+      Script: {instanceID: 12784}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 12822}
     - Class: 114
-      Script: {instanceID: 13136}
+      Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 13148}
+      Script: {instanceID: 13126}
     - Class: 114
-      Script: {instanceID: 13184}
+      Script: {instanceID: 13144}
     - Class: 114
-      Script: {instanceID: 13240}
+      Script: {instanceID: 13156}
+    - Class: 114
+      Script: {instanceID: 13192}
+    - Class: 114
+      Script: {instanceID: 13248}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -152,6 +156,12 @@ ScriptsOnlyBuild:
     - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -248,12 +258,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -400,6 +404,12 @@ ScriptsOnlyBuild:
     className: Oscillator
   - hash:
       serializedVersion: 2
+      Hash: 539a36188d3b368b01aa6425b4182b73
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Screenmanager
+  - hash:
+      serializedVersion: 2
       Hash: 5cc439bf63c0539d39588e69465ac2ab
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -418,7 +428,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 061aab7f30e422a87012ba83edf41b7f
+      Hash: 5a3a82cf391d4226394274117041964c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Character
@@ -502,7 +512,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 0d213fa291097a13acb32fa74fa7f8fa
+      Hash: f6643e300d33d7bc24da4d3d34beeddc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bot
@@ -568,10 +578,16 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: dba40cdebd2c039c1945ae5a7a412e22
+      Hash: 88b45b980a46d5c287a57c167c78f7ae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GridSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlankOnGround
   - hash:
       serializedVersion: 2
       Hash: 1f1a3b63bcb87e63110a26427883b8e5
@@ -694,7 +710,7 @@ ScriptsOnlyBuild:
     className: RandomWalk
   - hash:
       serializedVersion: 2
-      Hash: 6a1fed2e7b53ac9a052ff809dbdc1a35
+      Hash: 272aadc092294c46aa12495d86705a26
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player

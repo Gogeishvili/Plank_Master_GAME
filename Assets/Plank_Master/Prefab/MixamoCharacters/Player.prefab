@@ -1989,9 +1989,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 5.683408
+  m_Height: 6.441197
   m_Direction: 1
-  m_Center: {x: 0, y: 1.8417039, z: 0}
+  m_Center: {x: 0, y: 1.4628093, z: 0}
 --- !u!114 &6390702669996218925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,9 +2130,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 5.704218
+  m_Height: 6.558065
   m_Direction: 1
-  m_Center: {x: 0, y: 1.852109, z: 0}
+  m_Center: {x: 0, y: 1.4251854, z: 0}
 --- !u!114 &6390702670672285938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,8 +2428,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.735681, y: 5.7132363, z: 0.799152}
-  m_Center: {x: 0, y: 2.548353, z: 0}
+  m_Size: {x: 1.1242816, y: 6.310929, z: 0.799152}
+  m_Center: {x: 0, y: 2.2495067, z: 0}
 --- !u!1 &6597278627990419775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   isLive: 1
-  myPlankColor: {r: 0, g: 0.20540953, b: 1, a: 0}
+  myColor: {r: 0, g: 0.015195131, b: 1, a: 0}
   _maxSpeed: 10
   _gap: 0.2
   _thisAnimator: {fileID: 0}
