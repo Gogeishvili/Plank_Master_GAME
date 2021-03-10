@@ -1301,9 +1301,10 @@ GameObject:
   - component: {fileID: 2884102215121549069}
   - component: {fileID: 2884102215121549298}
   - component: {fileID: 2884102215121549297}
+  - component: {fileID: 1108958034}
   m_Layer: 0
   m_Name: Bot
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1398,14 +1399,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   isLive: 1
-  myColor: {r: 1, g: 0, b: 0, a: 0}
+  myColor: {r: 0.41007558, g: 1, b: 0.0047169924, a: 0}
   _maxSpeed: 1
   _gap: 0.2
   _thisAnimator: {fileID: 0}
-  _plankPrototypePref: {fileID: 1239080157220114819, guid: 072b4012ff8715a4f88c0b00550d8cfd,
-    type: 3}
-  _moveX: 20
-  _moveZ: 20
+  _plankPrototypePref:
+  - {fileID: 1239080157220114819, guid: 072b4012ff8715a4f88c0b00550d8cfd, type: 3}
+  - {fileID: 1369959949589214615, guid: b57181126a97a544695c7f2ae1375a84, type: 3}
+  _characterBody: {fileID: 2228886814542644141}
+  _myPlanks: []
+  _moveX: 200
+  _moveZ: 200
+--- !u!65 &1108958034
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2884102215121549299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1643076, y: 5.8955965, z: 2.0409663}
+  m_Center: {x: 0, y: 2.4477935, z: 0}
 --- !u!1 &3074098753020994519
 GameObject:
   m_ObjectHideFlags: 0

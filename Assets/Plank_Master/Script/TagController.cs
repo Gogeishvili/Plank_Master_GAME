@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TagController : MonoBehaviour
 {
-
     [SerializeField] Character _baseCharacter;
     void Start()
     {
@@ -12,19 +11,20 @@ public class TagController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+       
         if (_baseCharacter.isLive)
         {
             Plank _plank = other.GetComponent<Plank>();
 
             if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE && _plank.isActive)
             {
-                _plank.SetActiveAndDeactive(false,_baseCharacter.myColor,transform);
+                _plank.SetActiveAndDeactive(false, _baseCharacter.myColor, transform);
                 _plank.SetTag(MyStatics.CAN_NOT_TAKE);
-                _plank.isActive=false;
-                _plank.Drop(_baseCharacter.myColor,transform);
+                _plank.isActive = false;
+                _plank.Drop(_baseCharacter.myColor, transform);
             }
-
         }
+
     }
-   
+
 }

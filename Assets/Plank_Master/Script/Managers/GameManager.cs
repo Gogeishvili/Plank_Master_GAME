@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : Singleton<GameManager>
 {
     public bool gameOn = false;
-
+    public bool randomPlankeVersion = true;
+   
     [SerializeField] List<Character> _Characters = new List<Character>();
 
     private void Awake()
@@ -46,10 +48,10 @@ public class GameManager : Singleton<GameManager>
         _Characters.Remove(player);
 
         //game win
-        //  if (_Characters.Count == 1 && _Characters[0].isPlayer)
-        // {
-        //     GameWin();
-        // }
+        if (_Characters.Count == 1 && _Characters[0].isPlayer)
+        {
+            GameWin();
+        }
 
     }
     public void LoadScene()

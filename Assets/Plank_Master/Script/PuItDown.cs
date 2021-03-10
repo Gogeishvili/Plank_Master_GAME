@@ -12,15 +12,34 @@ public class PuItDown : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_baseCharacter.isLive)
+        if (GameManager.instance.randomPlankeVersion)
         {
-            Plank _plank = other.GetComponent<Plank>();
-            if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE)
+            if (_baseCharacter.isLive)
             {
-                
-                _plank.SetActiveAndDeactive(true,_baseCharacter.myColor,transform);
-                _plank.isActive=true;
-                _baseCharacter.PutItDown(2);
+                Plank _plank = other.GetComponent<Plank>();
+
+                if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE)
+                {
+                    _plank.SetActiveAndDeactive(true, _baseCharacter.myColor, transform);
+                    _plank.isActive = true;
+                    _baseCharacter.PutItDown(2);
+
+                }
+            }
+        }
+        else
+        {
+            if (_baseCharacter.isLive)
+            {
+                Plank _plank = other.GetComponent<Plank>();
+
+                if (other.gameObject.tag == MyStatics.CAN_NOT_TAKE)
+                {
+                    if (_plank)
+                        _plank.isActive = true;
+                        
+                    _baseCharacter.PutItDown(1);
+                }
 
             }
 
